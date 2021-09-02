@@ -4,7 +4,6 @@ const { databaseUrl } = require('./env-vars');
 
 const databaseConnectionOptions = {
   useNewUrlParser: true,
-  useCreateIndex: true,
   keepAlive: 1,
   connectTimeoutMS: 30000,
   useUnifiedTopology: true,

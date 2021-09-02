@@ -2,7 +2,8 @@ const joi = require('joi');
 
 // required environment variables
 ['NODE_ENV', 'PORT', 'MONGODB_URI'].forEach((name) => {
-  if (!process.env[name]) throw new Error(`Environment variable ${name} is missing`);
+  if (!process.env[name])
+    throw new Error(`Environment variable ${name} is missing`);
 });
 
 const envVarsSchema = joi
