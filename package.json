@@ -1,0 +1,35 @@
+{
+  "name": "graphql-interview-project-sunmonu-oluwole",
+  "version": "1.0.0",
+  "description": "graphql interview question",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/codelittinc/node-graphql-interview-project-sunmonu-oluwole.git"
+  },
+  "author": "Sunmonu Oluwole",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/codelittinc/node-graphql-interview-project-sunmonu-oluwole/issues"
+  },
+  "homepage": "https://gitlab.com/codelittinc/node-graphql-interview-project-sunmonu-oluwole#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.3.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "joi": "^17.4.2",
+    "mongoose": "^6.0.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2"
+  }
+}
