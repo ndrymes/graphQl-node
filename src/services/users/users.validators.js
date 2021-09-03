@@ -14,16 +14,25 @@ class UsersValidator {
   signUp(data) {
     const { Joi } = this;
     const schema = {
-      email: Joi.string().required(),
+      email: Joi.string().email().required(),
       password: Joi.string().required(),
       role: Joi.string().required(),
       tags: Joi.string(),
       firstName: Joi.string(),
       lastName: Joi.string(),
+      duration: Joi.string(),
       userType: Joi.string()
         .valid(...this.constants.USERTYPEKEYS)
         .required(),
-      status: Joi.string().valid(...this.constants.STATUSKEYS),
+    };
+    return Joi.object(schema).validateAsync(data);
+  }
+
+  login(data) {
+    const { Joi } = this;
+    const schema = {
+      email: Joi.string().email().required(),
+      password: Joi.string().required(),
     };
     return Joi.object(schema).validateAsync(data);
   }
@@ -35,7 +44,13 @@ class UsersValidator {
       }
       const { Joi } = this;
       const schema = {
-        name: Joi.string(),
+        email: Joi.string().email(),
+        password: Joi.string(),
+        role: Joi.string(),
+        tags: Joi.array(),
+        firstName: Joi.string(),
+        lastName: Joi.string(),
+        userType: Joi.string().valid(...this.constants.USERTYPEKEYS),
       };
       return Joi.object(schema).validateAsync(data);
     } catch (error) {
@@ -43,19 +58,12 @@ class UsersValidator {
     }
   }
 
-  updateHobbies(data) {
-    try {
-      if (Object.keys(data).length === 0) {
-        throw new Error('At least one field must be supplied for update');
-      }
-      const { Joi } = this;
-      const schema = {
-        hobbies: Joi.array(),
-      };
-      return Joi.object(schema).validateAsync(data);
-    } catch (error) {
-      throw error;
-    }
+  deleteUser(data) {
+    const { Joi } = this;
+    const schema = {
+      userId: Joi.string().required(),
+    };
+    return Joi.object(schema).validateAsync(data);
   }
 }
 const usersValidator = new UsersValidator();

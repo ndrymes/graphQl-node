@@ -10,6 +10,7 @@ const envVarsSchema = joi
   .object({
     NODE_ENV: joi.string().required(),
     PORT: joi.any().required(),
+    JSON_WEB_TOKEN: joi.string().required(),
     MONGODB_URI: joi.string().required(),
     SERVICE_NAME: joi.string().required(),
   })
@@ -26,6 +27,7 @@ const envVars = {
   port: envVariables.PORT,
   databaseUrl: envVariables.MONGODB_URI,
   serviceName: envVariables.SERVICE_NAME,
+  JSON_WEB_TOKEN: envVariables.JSON_WEB_TOKEN,
 };
 
 module.exports = envVars;

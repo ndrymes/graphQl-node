@@ -3,12 +3,14 @@ const graphql = require('graphql');
 const { GraphQLObjectType } = graphql;
 
 // Queries
-const { user } = require('./queries/user.query');
+const { fetchUsers } = require('./queries/user.query');
+const { fetchTags } = require('./queries/tags.queries');
 
 exports.query = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
     // User
-    user,
+    fetchUsers,
+    fetchTags,
   },
 });

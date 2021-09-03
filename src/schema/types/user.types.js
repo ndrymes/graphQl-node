@@ -6,12 +6,20 @@ const UserType = new GraphQLObjectType({
     _id: { type: GraphQLID },
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
+    duration: { type: GraphQLString },
+    password: { type: GraphQLString },
     email: { type: GraphQLString },
     type: { type: GraphQLString },
     role: { type: GraphQLString },
-    duration: { type: GraphQLString },
-    password: { type: GraphQLString },
     status: { type: GraphQLString },
+  }),
+});
+
+exports.LoginAuthType = new GraphQLObjectType({
+  name: 'LoginUser',
+  fields: () => ({
+    user: { type: UserType },
+    token: { type: GraphQLString },
   }),
 });
 

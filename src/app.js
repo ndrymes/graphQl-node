@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
+const { GraphQLError } = require('graphql');
 const { middleware, database } = require('./config');
 
 const app = express();
@@ -17,6 +18,13 @@ app.use(
     schema,
     rootValue: root,
     graphiql: true,
+    context: {
+      isAuth: req.isAuth,
+      userObject: req.userObject,
+      authErrorMsg: req.authErrorMsg,
+    },
+    // customFormatErrorFn: (err) =>
+    //   new GraphQLError({ message: err.message, code: err.statusCode }),
   })),
 );
 
