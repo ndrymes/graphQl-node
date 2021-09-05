@@ -11,15 +11,14 @@ const {
   responseHelper: { errorResponse },
 } = require("../../helpers/error.helper");
 
-
 class UserService {
   // eslint-disable-next-line class-methods-use-this
 
   /**
- * Sign UP
- * @param {Object} userObject
- * @returns {Object} { user } 
- */
+   * Sign UP
+   * @param {Object} userObject
+   * @returns {Object} { user }
+   */
   async signUp(requestContext) {
     try {
       // validates request body
@@ -42,10 +41,10 @@ class UserService {
   }
 
   /**
- * Sign In
- * @param {Object} userObject
- * @returns {Object} { user, token } 
- */
+   * Sign In
+   * @param {Object} userObject
+   * @returns {Object} { user, token }
+   */
   async logIn(requestContext) {
     try {
       if (requestContext.email == null || requestContext.password == null) {
@@ -69,10 +68,10 @@ class UserService {
     }
   }
 
- /**
- * Get all users
- * @returns {Object} users
- */
+  /**
+   * Get all users
+   * @returns {Object} users
+   */
   async fetchUsers() {
     try {
       //fetch all users
@@ -90,10 +89,10 @@ class UserService {
   }
 
   /**
- * Get single user
- * @param {String} userId
- * @returns {Object} user
- */
+   * Get single user
+   * @param {String} userId
+   * @returns {Object} user
+   */
   async getUser(requestContext) {
     try {
       // validates request body
@@ -114,11 +113,11 @@ class UserService {
   }
 
   /**
- * Edit user infomation
- * @param {Object} user
- * @param {Object} editUser
- * @returns {Object} updatedUser
- */
+   * Edit user infomation
+   * @param {Object} user
+   * @param {Object} editUser
+   * @returns {Object} updatedUser
+   */
   async editUser(userId, requestContext) {
     try {
       // validates request body
@@ -131,13 +130,12 @@ class UserService {
   }
 
   /**
- * Delete user infomation
- * @param {String} user
- * @returns {Object} response
- */
+   * Delete user infomation
+   * @param {String} user
+   * @returns {Object} response
+   */
 
   async deleteUser(requestContext) {
-  
     //In prod enviroment, This should be a soft delete because we dont want to loose data can be useful for metrics and other purposes
     try {
       // validates request body

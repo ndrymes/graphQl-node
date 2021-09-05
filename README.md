@@ -1,13 +1,8 @@
-
-
 # Codelitt Test
 
 The task is to build a Graphql API to perfom a CRUD operation on users profile based on some requirements which are.
 
-1)A member has a name and a type the late one can be an employee or a contractor.
-2) A contractor should have the duration of a contract which should be  an integer.
-3) An employee, should have a  role, for instance: Software Engineer, Project Manager and so on.
-4) A member can be tagged, for instance: C#, Angular, General Frontend, Seasoned Leader and so on. (Tags will likely be used as filters later)
+1)A member has a name and a type the late one can be an employee or a contractor. 2) A contractor should have the duration of a contract which should be an integer. 3) An employee, should have a role, for instance: Software Engineer, Project Manager and so on. 4) A member can be tagged, for instance: C#, Angular, General Frontend, Seasoned Leader and so on. (Tags will likely be used as filters later)
 
 # Get Started
 
@@ -27,17 +22,17 @@ The default endpoint is an health check endpoint that returns a success response
 
 There is only a single api available, it can be used to retrieve records over the graphql network
 
-| Parameter   | Description                                 |
-| ----------- | ------------------------------------------- |
-| Http Method | GET                                         |
-| Base Url    | https://blooming-springs-54358.herokuapp.com|
-| Path        | /graphql                                    |
+| Parameter   | Description                                  |
+| ----------- | -------------------------------------------- |
+| Http Method | GET                                          |
+| Base Url    | https://blooming-springs-54358.herokuapp.com |
+| Path        | /graphql                                     |
 
 ## MUTATIONS
 
-###  Sample Request Parameters
+### Sample Request Parameters
 
-### signUp 
+### signUp
 
 ```
 mutation{

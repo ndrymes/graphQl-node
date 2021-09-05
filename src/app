@@ -33,7 +33,10 @@ module.exports = async () => {
   await database.connect();
 
   // Health Check Endpoint
-  app.use("/", (req, res) => res.send("Ok"));
+  app.use("/", (req, res) => res.send({
+      message:"Service is running here",
+      status:"OK"
+  }));
 
   return app;
 };
