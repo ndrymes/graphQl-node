@@ -18,7 +18,6 @@ exports.fetchUsers = {
 exports.getUser = {
   type: UserType,
   resolve(parent, args, req) {
-    // Improve this by making it a role based authorization, where it is only a user that is an Admin that can fetch all resources
     if (!req.isAuth) {
       throw new Error(req.authErrorMsg);
     }

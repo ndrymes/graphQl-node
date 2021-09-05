@@ -1,13 +1,13 @@
 
 
-# codelitt Test
+# Codelitt Test
 
 The task is to build a Graphql API to perfom a CRUD operation on users profile based on some requirements which are.
 
 1)A member has a name and a type the late one can be an employee or a contractor.
 2) A contractor should have the duration of a contract which should be  an integer.
 3) An employee, should have a  role, for instance: Software Engineer, Project Manager and so on.
-4) A member can be tagged, for instance: C#, Angular, General Frontend, Seasoned Leader and so on. (Tags will likely be used as filters later, so keep that in mind)
+4) A member can be tagged, for instance: C#, Angular, General Frontend, Seasoned Leader and so on. (Tags will likely be used as filters later)
 
 # Get Started
 
@@ -16,11 +16,11 @@ The task is to build a Graphql API to perfom a CRUD operation on users profile b
 - Make a copy of the .env.sample file and rename to .env
 - Start the app using
   - `npm run dev` for development
-  - `npm run prod` for production
+  - `npm run start` for production
 
 # Demo
 
-The app is hosted on heroku. The base url is <a href="https://tranquil-hamlet-81728.herokuapp.com">https://tranquil-hamlet-81728.herokuapp.com</a>.
+The app is hosted on heroku. The base url is <a href="https://blooming-springs-54358.herokuapp.com">https://blooming-springs-54358.herokuapp.com</a>.
 The default endpoint is an health check endpoint that returns a success response.
 
 ## API
@@ -30,14 +30,14 @@ There is only a single api available, it can be used to retrieve records over th
 | Parameter   | Description                                 |
 | ----------- | ------------------------------------------- |
 | Http Method | GET                                         |
-| Base Url    | https://tranquil-hamlet-81728.herokuapp.com |
+| Base Url    | https://blooming-springs-54358.herokuapp.com|
 | Path        | /graphql                                    |
 
 ## MUTATIONS
 
-### Request Parameters
+###  Sample Request Parameters
 
-### signUp -
+### signUp 
 
 ```
 mutation{
@@ -79,9 +79,9 @@ mutation{
 
 ## QUERIES
 
-### Request Parameters
+### Sample Request Parameters
 
-### -
+### User Profile
 
 ```
  query{
@@ -123,9 +123,7 @@ mutation{
 
 # Project Structure
 
-![file structure](https://i1.wp.com/blog.logrocket.com/wp-content/uploads/2019/10/folder-structure.png?w=730&ssl=1)
-
-<a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">Source LogRocket</a>
+![file structure]("https://i.ibb.co/4MHsBCk/Screenshot-2021-09-05-at-16-26-58.png")
 
 # Libraries Used
 

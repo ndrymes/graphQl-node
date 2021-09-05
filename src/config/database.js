@@ -38,7 +38,6 @@ const getUrl = async () =>
 const connect = async () => {
   try {
     const url = await getUrl();
-    console.log({ url });
     await mongoose.connect(url, databaseConnectionOptions);
     debug("Database connection successful");
   } catch (e) {

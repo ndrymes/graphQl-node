@@ -11,6 +11,11 @@ const {
 
 class TagsService {
   // eslint-disable-next-line class-methods-use-this
+  /**
+ * create Tags
+ * @param {String} request
+ * @returns {Object} response tag
+ */
   async createTags(requestContext) {
     try {
       // validates request body
@@ -28,7 +33,12 @@ class TagsService {
       return error;
     }
   }
-
+ /**
+ * fetch Tags
+ * @param {String} request
+ * @returns {Object} response tags
+ */
+  
   async fetchTags() {
     try {
       // get all tags
@@ -39,6 +49,11 @@ class TagsService {
     }
   }
 
+  /**
+ * Edit Tags
+ * @param {String} request
+ * @returns {Object} response tag
+ */
   async editTag(requestContext) {
     try {
       // validates request body
@@ -56,7 +71,13 @@ class TagsService {
     }
   }
 
+  /**
+ * delete Tags
+ * @param {String} request
+ * @returns {Object} response tag
+ */
   async deleteTags(requestContext) {
+    //In prod enviroment, This should be a soft delete because we dont want to loose data can be useful for metrics and other purposes
     try {
       // validates request body
       const body = await tagsValidator.deleteTags(requestContext);
