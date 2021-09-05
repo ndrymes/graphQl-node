@@ -8,12 +8,12 @@ class UserRepository {
   }
 
   // fetch single user from the database
-  async getUser(body, populate = '') {
+  async getUser(body, populate = "") {
     return userModel.findOne(body).populate(populate);
   }
 
   // fetch all users from the database
-  async getUsers(body, populate = '') {
+  async getUsers(body, populate = "") {
     return userModel.find(body).populate(populate);
   }
 

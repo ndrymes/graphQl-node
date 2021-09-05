@@ -12,6 +12,6 @@ exports.query = new GraphQLObjectType({
     // User
     fetchUsers,
     fetchTags,
-    getUser
+    getUser,
   },
 });

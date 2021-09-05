@@ -20,7 +20,7 @@ class UsersValidator {
       tags: Joi.string(),
       firstName: Joi.string(),
       lastName: Joi.string(),
-      duration: Joi.string(),
+      duration: Joi.number(),
       userType: Joi.string()
         .valid(...this.constants.USERTYPEKEYS)
         .required(),
@@ -36,7 +36,6 @@ class UsersValidator {
     };
     return Joi.object(schema).validateAsync(data);
   }
-
 
   getUser(data) {
     const { Joi } = this;

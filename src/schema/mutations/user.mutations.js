@@ -2,7 +2,7 @@ const graphql = require("graphql");
 
 const { GraphQLString, GraphQLID, GraphQLList } = graphql;
 const { UserType, LoginAuthType } = require("../types/user.types");
-const {TagType} = require('../types/tags.types')
+const { TagType } = require("../types/tags.types");
 const {
   RESPONSETYPES: { ERROR },
 } = require("../../helpers/constants");
@@ -53,7 +53,6 @@ exports.editUser = {
     duration: { type: GraphQLString },
   },
   resolve(parent, args, req) {
-    console.log({});
     if (!req.userObject) {
       throw new Error(req.authErrorMsg);
     }

@@ -23,8 +23,8 @@ app.use(
       userObject: req.userObject,
       authErrorMsg: req.authErrorMsg,
     },
-    // customFormatErrorFn: (err) =>
-    //   new GraphQLError({ message: err.message, code: err.statusCode }),
+    customFormatErrorFn: (err) =>
+      new GraphQLError({ error: err.message, code: err.statusCode }),
   }))
 );
 

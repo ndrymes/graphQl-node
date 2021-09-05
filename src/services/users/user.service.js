@@ -60,10 +60,13 @@ class UserService {
   async fetchUsers() {
     try {
       //fetch all users
-      const users = await userRepository.getUsers({
-        deleted: false,
-        status: "ACTIVE",
-      }, 'tags');
+      const users = await userRepository.getUsers(
+        {
+          deleted: false,
+          status: "ACTIVE",
+        },
+        "tags"
+      );
       return users;
     } catch (error) {
       throw error;
@@ -72,31 +75,30 @@ class UserService {
 
   async getUser(requestContext) {
     try {
-       // validates request body
-       const body = await userValidator.getUser(requestContext);
-       // get a user 
-      const users = await userRepository.getUser({
-        _id: requestContext.userId,
-        deleted: false,
-        status: "ACTIVE",
-      }, 'tags');
+      // validates request body
+      const body = await userValidator.getUser(requestContext);
+      // get a user
+      const users = await userRepository.getUser(
+        {
+          _id: requestContext.userId,
+          deleted: false,
+          status: "ACTIVE",
+        },
+        "tags"
+      );
       return users;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
 
-
   async editUser(userId, requestContext) {
     try {
-      console.log({requestContext});
       // validates request body
       const body = await userValidator.updateUsers(requestContext);
       const users = await userRepository.editUser(userId, body);
       return users;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }

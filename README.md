@@ -1,59 +1,155 @@
-## Instructions
-
-The goal of this exercise is to create a backend using Node using a GraphQL arquitecture.
-
-### The Task
-
-In this task, we are building backend of an application that helps us managing our team using GraphQL.
-
-### Features and Requirements
-- A member has a name and a type the late one can be an employee or a contractor.
-- - If it's a contractor, we want to store the the duration of the contract as an integer.
-- - If it's an employee, we need to store their role, for instance: Software Engineer, Project Manager and so on.
-- A member can be tagged, for instance: C#, Angular, General Frontend, Seasoned Leader and so on. (Tags will likely be used as filters later, so keep that in mind)
-- We need to offer GraphQL CRUD for all the information above.
-
-### Notes:
-
-1. You can use any Node framework
-2. Make sure to provide a tutorial on how to run your application
-3. Feel free to use any database
-
-## Evaluation
-| Functionality     |                                                                | Possible Points |
-|-------------------|----------------------------------------------------------------|-----------------|
-|                   | Matches the proposed requirements                              |              20 |
-|                   | Implements GraphQL correctly                                   |              15 |
-|                   | Separation of business logic and persistence layers            |              15 |
-|                   | Input validations                                              |               5 |
-|                   | Standard HTTP error codes                                      |               5 |
-| **Code Quality**  |                                                                |                 |
-|                   | Code formatting, readability, maintainability, etc             |               5 |
-|                   | Folders and packages structure                                 |               5 |
-| **DevOps**        |                                                                |                 |
-|                   | Docker image to build/run the project                          |              10 |
-|                   | DB migrations                                                  |               5 |
-| **Documentation** |                                                                |                 |
-|                   | Documentation about the work done, how to run the project, etc |               5 |
-| **Testing**       |                                                                |                 |
-|                   | Has tests                                                      |              10 |
-| **Total**         |                                                                |             100 |
 
 
-### Bonus Points:
-1. If you deploy the application in any server and share the link with us
-2. If provide thoughts on what you could improve on your code given more time and incentives
+# codelitt Test
 
-## F.A.Q.
+The task is to build a Graphql API to perfom a CRUD operation on users profile based on some requirements which are.
 
-### Is it necessary build a frontend?
-No, this is a simply backend exercise.
+1)A member has a name and a type the late one can be an employee or a contractor.
+2) A contractor should have the duration of a contract which should be  an integer.
+3) An employee, should have a  role, for instance: Software Engineer, Project Manager and so on.
+4) A member can be tagged, for instance: C#, Angular, General Frontend, Seasoned Leader and so on. (Tags will likely be used as filters later, so keep that in mind)
 
-### How do you evaluate the exercise?
-For every exercise we have two senior backend engineers from our team reviewing the code and the functionality and giving a score for each line item as shown in the previous table.
+# Get Started
 
-### How can I deliver the exercise?
-To deliver the exercise, you should clone this repository and work on a new branch. When you'll consider it completed, just push the branch and open a Merge Request.
+- Clone the repository using git clone https://gitlab.com/codelittinc/node-graphql-interview-project-sunmonu-oluwole.git
+- Run `npm i` or `npm install` to install all app dependencies
+- Make a copy of the .env.sample file and rename to .env
+- Start the app using
+  - `npm run dev` for development
+  - `npm run prod` for production
 
-### Will I have access to the evaluation?
-By default we only send the result, however you can feel free to request the full evaluation and we will share it with you as well as the final score.
+# Demo
+
+The app is hosted on heroku. The base url is <a href="https://tranquil-hamlet-81728.herokuapp.com">https://tranquil-hamlet-81728.herokuapp.com</a>.
+The default endpoint is an health check endpoint that returns a success response.
+
+## API
+
+There is only a single api available, it can be used to retrieve records over the graphql network
+
+| Parameter   | Description                                 |
+| ----------- | ------------------------------------------- |
+| Http Method | GET                                         |
+| Base Url    | https://tranquil-hamlet-81728.herokuapp.com |
+| Path        | /graphql                                    |
+
+## MUTATIONS
+
+### Request Parameters
+
+### signUp -
+
+```
+mutation{
+  signUp(email:"sunm@yahoo.com",password:"123456", role:"software", userType:"CONTRACTOR" ){
+    role
+  }
+}
+```
+
+### Sample Success Response Parameters
+
+```
+    {
+  "data": {
+    "signUp": {
+      "role": "software",
+      "userType": "CONTRACTOR"
+    }
+  }
+}
+```
+
+### Sample Error Response Parameters
+
+```
+    {
+  "errors": [
+    {
+      "message": {
+        "error": "user already exist"
+      }
+    }
+  ],
+  "data": {
+    "signUp": null
+  }
+}
+```
+
+## QUERIES
+
+### Request Parameters
+
+### -
+
+```
+ query{
+   getUser{
+     role
+  }
+ }
+
+```
+
+### Sample Success Response Parameters
+
+```
+    {
+  "data": {
+    "getUser": {
+      "role": "software",
+    }
+  }
+}
+```
+
+### Sample Error Response Parameters
+
+```
+    {
+  "errors": [
+    {
+      "message": {
+        "error": "Not Authorized"
+      }
+    }
+  ],
+  "data": {
+    "getUser": null
+  }
+}
+```
+
+# Project Structure
+
+![file structure](https://i1.wp.com/blog.logrocket.com/wp-content/uploads/2019/10/folder-structure.png?w=730&ssl=1)
+
+<a href="https://blog.logrocket.com/the-perfect-architecture-flow-for-your-next-node-js-project/">Source LogRocket</a>
+
+# Libraries Used
+
+- Jest - For running unit tests
+- Express - Popular framework with a robust set of features for running apps
+- Dotenv - For using environment variables in development
+- Joi - For validating data
+- Mongoose - ODM for mongodb that makes maning the database much easier
+- Express-graphql - For serving request leveraging on express and graphql
+
+# Todo
+
+I had a lot of fun building this but there are some improvements I can still make:
+
+- More tests, especially integration tests, unit tests for the services and api tests using super test.
+- Use a DTO object to handle transfer of data from the resolver to the service layer, this will help keep data consistent even when data names change
+- Add push pre-hooks that runs eslint and prettifier before every push
+- Add a dependency injection library like awilix to handle injection of dependencies
+- Include a makefile to ease the execution of some common tasks
+- Improve on graphql error handling
+
+# Testing
+
+- To run the tests, simply type `npm test`
+- We can also get code coverage by `npm run coverage`
+
+Thank you 👍

@@ -1,6 +1,5 @@
 const joi = require("joi");
 require("dotenv").config();
-console.log(process.env.NODE_ENV);
 // required environment variables
 ["NODE_ENV", "PORT", "MONGODB_URI", "JSON_WEB_TOKEN"].forEach((name) => {
   if (!process.env[name])

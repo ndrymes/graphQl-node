@@ -5,8 +5,6 @@ const { graphql } = require("graphql");
 const schema = require("../../schema/index");
 const { users } = require("../mock-payload");
 
-
-
 describe("Tag Controller", () => {
   // Close the server to avoid memory leaks
   afterAll(() => mongoose.disconnect());
@@ -15,7 +13,6 @@ describe("Tag Controller", () => {
   });
 
   describe("create", () => {
-    
     it("should create a tag and return tag details ", async () => {
       const query = `
       mutation{
@@ -32,11 +29,13 @@ describe("Tag Controller", () => {
       };
       const data = await graphql(schema, query, null, context, {});
       expect(data.data.createTags.name).toBe("football");
-      expect(data.data.createTags.description).toBe("Soccer played on the field");
+      expect(data.data.createTags.description).toBe(
+        "Soccer played on the field"
+      );
     });
 
     it("should create a tag and return tag details ", async () => {
-        const query = `
+      const query = `
         mutation{
           createTags( description:"Soccer played on the field"){
             name
@@ -44,19 +43,17 @@ describe("Tag Controller", () => {
           }
         }
         `;
-        const context = {
-          isAuth: true,
-          // userObject: req.userObject,
-          authErrorMsg: "Not authorized",
-        };
-        const data = await graphql(schema, query, null, context, {});
-        expect(data.errors[0].message).toBe("\"name\" is required");
-      });
-    
+      const context = {
+        isAuth: true,
+        // userObject: req.userObject,
+        authErrorMsg: "Not authorized",
+      };
+      const data = await graphql(schema, query, null, context, {});
+      expect(data.errors[0].message).toBe('"name" is required');
+    });
   });
 
   describe("fetch Tags", () => {
-
     it("should login a user and return  user details ", async () => {
       const query = `query{
         fetchTags{
@@ -70,25 +67,10 @@ describe("Tag Controller", () => {
         authErrorMsg: "Not authorized",
       };
       const data = await graphql(schema, query, null, context, {});
-      console.log({data});
       expect(data.data.fetchTags[0].name).toBe("football");
-      expect(data.data.fetchTags[0].description).toBe("Soccer played on the field");
+      expect(data.data.fetchTags[0].description).toBe(
+        "Soccer played on the field"
+      );
     });
-
-    // it("should throw an error if user sends invalid request body ", async () => {
-    //   const query = `mutation{
-    //   login(email:"sunmonuoluwoleyahoo.com", password:"233$%%4##"){
-    //     user{
-    //       email
-    //      userType
-    //     }
-    //  token
-    //   }
-    // }
-    // `;
-    //   const data = await graphql(schema, query, null, context, {});
-    //   console.log({ data });
-    //   expect(data.errors[0].message).toBe('"email" must be a valid email');
-    // });
   });
 });

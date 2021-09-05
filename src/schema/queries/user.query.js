@@ -25,7 +25,7 @@ exports.getUser = {
     if (req.userObject == null) {
       throw new Error(req.authErrorMsg);
     }
-    const reqContext = { userId :req.userObject.userId }
-    return getUser({reqContext});
+    const reqContext = { userId: req.userObject.userId };
+    return getUser({ reqContext });
   },
 };

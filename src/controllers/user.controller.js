@@ -14,7 +14,6 @@ exports.login = async ({ reqContext }) => {
     const user = await userService.logIn(reqContext);
     return user;
   } catch (error) {
-    console.log(error);
     throw new Error(error.msg || error.message);
   }
 };
@@ -29,11 +28,9 @@ exports.fetchUsers = async () => {
 
 exports.getUser = async ({ reqContext }) => {
   try {
-    console.log('called');
-    const user = await userService.getUser(reqContext );
+    const user = await userService.getUser(reqContext);
     return user;
   } catch (error) {
-    console.log(error);
     throw new Error(error.msg || error.message);
   }
 };

@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema(
       enum: USERTYPEKEYS,
     },
     duration: {
-      type: String,
+      type: Number,
       default: null,
     },
     token: {

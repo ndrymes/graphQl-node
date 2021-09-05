@@ -1,5 +1,10 @@
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLList } = require("graphql");
-const {TagType} = require('./tags.types')
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLList,
+} = require("graphql");
+const { TagType } = require("./tags.types");
 const UserType = new GraphQLObjectType({
   name: "Users",
   fields: () => ({
@@ -10,7 +15,7 @@ const UserType = new GraphQLObjectType({
     password: { type: GraphQLString },
     email: { type: GraphQLString },
     userType: { type: GraphQLString },
-    tags: { type:  GraphQLList(TagType) },
+    tags: { type: GraphQLList(TagType) },
     role: { type: GraphQLString },
     status: { type: GraphQLString },
   }),

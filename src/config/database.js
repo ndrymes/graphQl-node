@@ -20,7 +20,6 @@ const databaseConnectionOptions = {
 const getUrl = async () =>
   new Promise(async (resolve, reject) => {
     try {
-      console.log("33###", process.env.NODE_ENV);
       if (process.env.NODE_ENV === "test") {
         // This will create an new instance of "MongoMemoryServer" and automatically start it
         const mongod = await MongoMemoryServer.create();

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const appCore = require('../app');
+const appCore = require('../src/app');
 const debug = require('debug')('codelitt:server');
 const http = require('http');
 
