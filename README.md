@@ -123,7 +123,7 @@ mutation{
 
 # Project Structure
 
-![file structure]("https://i.ibb.co/4MHsBCk/Screenshot-2021-09-05-at-16-26-58.png")
+![file structure](https://i.ibb.co/4MHsBCk/Screenshot-2021-09-05-at-16-26-58.png)
 
 # Libraries Used
 
