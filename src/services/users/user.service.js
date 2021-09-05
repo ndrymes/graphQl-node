@@ -2,14 +2,14 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-useless-catch */
 /* eslint-disable no-undef */
-const bcrypt = require('bcryptjs');
-const { userRepository } = require('../../repositories');
-const userValidator = require('./users.validators');
-const { RESPONSETYPES, STATUSCODE } = require('../../constants');
-const authTokenHelper = require('../../helpers/auth-token.helper');
+const bcrypt = require("bcryptjs");
+const { userRepository } = require("../../repositories");
+const userValidator = require("./users.validators");
+const { RESPONSETYPES, STATUSCODE } = require("../../helpers/constants");
+const authTokenHelper = require("../../helpers/auth-token.helper");
 const {
   responseHelper: { errorResponse },
-} = require('../../helpers/error.helper');
+} = require("../../helpers/error.helper");
 
 class UserService {
   // eslint-disable-next-line class-methods-use-this
@@ -22,7 +22,7 @@ class UserService {
       if (userExist)
         errorResponse(
           RESPONSETYPES.ERROR.USER_EXIST.message,
-          STATUSCODE.bad_request,
+          STATUSCODE.bad_request
         );
       const hashedPassword = bcrypt.hashSync(requestContext.password);
       body.password = hashedPassword;
@@ -37,7 +37,7 @@ class UserService {
   async logIn(requestContext) {
     try {
       if (requestContext.email == null || requestContext.password == null) {
-        throw new Error('Please provide both username and password!');
+        throw new Error("Please provide both username and password!");
       }
       // validates request body
       const body = await userValidator.login(requestContext);
@@ -59,24 +59,44 @@ class UserService {
 
   async fetchUsers() {
     try {
-      // get all users
+      //fetch all users
       const users = await userRepository.getUsers({
         deleted: false,
-        status: 'ACTIVE',
-      });
+        status: "ACTIVE",
+      }, 'tags');
       return users;
     } catch (error) {
       throw error;
     }
   }
 
-  async editUser(requestContext) {
+  async getUser(requestContext) {
     try {
+       // validates request body
+       const body = await userValidator.getUser(requestContext);
+       // get a user 
+      const users = await userRepository.getUser({
+        _id: requestContext.userId,
+        deleted: false,
+        status: "ACTIVE",
+      }, 'tags');
+      return users;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+
+  async editUser(userId, requestContext) {
+    try {
+      console.log({requestContext});
       // validates request body
       const body = await userValidator.updateUsers(requestContext);
       const users = await userRepository.editUser(userId, body);
       return users;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   }

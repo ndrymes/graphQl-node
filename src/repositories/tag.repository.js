@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-const TagModel = require('../models/tags.model');
+const TagModel = require("../models/tags.model");
 
 class TagRepository {
   // persist tag in the database

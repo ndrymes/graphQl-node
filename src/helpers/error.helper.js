@@ -23,7 +23,7 @@ const responseCodes = {
  * @param data - Any extra data to be passed with the error response
  * @return response object
  */
-const errorResponse = (errorMessage = '', statusCode) => {
+const errorResponse = (errorMessage = "", statusCode) => {
   const err = new Error(errorMessage);
   err.statusCode = statusCode;
   throw err;

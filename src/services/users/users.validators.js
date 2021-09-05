@@ -1,7 +1,7 @@
 /* eslint-disable no-useless-catch */
-const Joi = require('joi');
-const mongoose = require('mongoose');
-const constants = require('../../constants');
+const Joi = require("joi");
+const mongoose = require("mongoose");
+const constants = require("../../helpers/constants");
 
 const { ObjectId } = mongoose.Types;
 
@@ -37,10 +37,18 @@ class UsersValidator {
     return Joi.object(schema).validateAsync(data);
   }
 
+
+  getUser(data) {
+    const { Joi } = this;
+    const schema = {
+      userId: Joi.string().required(),
+    };
+    return Joi.object(schema).validateAsync(data);
+  }
   updateUsers(data) {
     try {
       if (Object.keys(data).length === 0) {
-        throw new Error('At least one field must be supplied for update');
+        throw new Error("At least one field must be supplied for update");
       }
       const { Joi } = this;
       const schema = {

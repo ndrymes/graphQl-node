@@ -1,8 +1,8 @@
-const graphql = require('graphql');
+const graphql = require("graphql");
 
 const { GraphQLList } = graphql;
-const { TagType } = require('../types/tags.types');
-const { fetchTags } = require('../../controllers/tags.contollers');
+const { TagType } = require("../types/tags.types");
+const { fetchTags } = require("../../controllers/tags.contollers");
 
 exports.fetchTags = {
   type: GraphQLList(TagType),

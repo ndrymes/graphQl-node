@@ -1,16 +1,16 @@
-const graphql = require('graphql');
+const graphql = require("graphql");
 
 const { GraphQLObjectType } = graphql;
 
-const { signUp, login, editUser } = require('./mutations/user.mutations');
+const { signUp, login, editUser } = require("./mutations/user.mutations");
 const {
   createTags,
   editTags,
   deleteTags,
-} = require('./mutations/tags.mutations');
+} = require("./mutations/tags.mutations");
 
 exports.mutation = new GraphQLObjectType({
-  name: 'RootMutation',
+  name: "RootMutation",
   fields: {
     // User
     signUp,

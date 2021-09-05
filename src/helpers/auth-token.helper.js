@@ -1,10 +1,10 @@
 /* eslint-disable consistent-return */
 /* eslint-disable class-methods-use-this */
-const jwt = require('jsonwebtoken');
-const envVars = require('../config/env-vars');
+const jwt = require("jsonwebtoken");
+const envVars = require("../config/env-vars");
 const {
   RESPONSETYPES: { ERROR },
-} = require('../constants');
+} = require("./constants");
 
 class AuthToken {
   generateToken({ userId, role, expiresIn = 1440 * 60 }) {
@@ -16,7 +16,7 @@ class AuthToken {
       envVars.JSON_WEB_TOKEN,
       {
         expiresIn, // expires in 24 hours //input is in seconds
-      },
+      }
     );
   }
 
@@ -24,7 +24,7 @@ class AuthToken {
     const status = e.status ? e.status : 401;
     const message = e.message
       ? e.message
-      : 'An error occurred verifying your token';
+      : "An error occurred verifying your token";
     throw new Error(message);
   }
 
@@ -63,7 +63,7 @@ class AuthToken {
     } catch (e) {
       if (
         e.name != null &&
-        (e.name === 'TokenExpiredError' || e.name === 'JsonWebTokenError')
+        (e.name === "TokenExpiredError" || e.name === "JsonWebTokenError")
       ) {
         req.authErrorMsg = ERROR.NOT_AUTHORIZED.message;
         req.isAuth = false;
@@ -71,7 +71,6 @@ class AuthToken {
       }
       req.authErrorMsg = ERROR.NOT_AUTHORIZED.message;
       return (req.isAuth = false);
-      
     }
   }
 }

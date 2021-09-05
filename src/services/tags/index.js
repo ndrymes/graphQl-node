@@ -1,4 +1,4 @@
-const tagsService = require('./tags.services');
+const tagsService = require("./tags.services");
 
 module.exports = {
   tagsService,

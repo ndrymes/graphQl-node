@@ -1,7 +1,7 @@
-const { GraphQLObjectType, GraphQLString, GraphQLID } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLID } = require("graphql");
 
 exports.TagType = new GraphQLObjectType({
-  name: 'Tags',
+  name: "Tags",
   fields: () => ({
     _id: { type: GraphQLID },
     name: { type: GraphQLString },

@@ -1,4 +1,4 @@
-const { userService } = require('../services/users');
+const { userService } = require("../services/users");
 
 exports.signUp = async ({ reqContext }) => {
   try {
@@ -14,6 +14,7 @@ exports.login = async ({ reqContext }) => {
     const user = await userService.logIn(reqContext);
     return user;
   } catch (error) {
+    console.log(error);
     throw new Error(error.msg || error.message);
   }
 };
@@ -22,6 +23,17 @@ exports.fetchUsers = async () => {
     const user = await userService.fetchUsers();
     return user;
   } catch (error) {
+    throw new Error(error.msg || error.message);
+  }
+};
+
+exports.getUser = async ({ reqContext }) => {
+  try {
+    console.log('called');
+    const user = await userService.getUser(reqContext );
+    return user;
+  } catch (error) {
+    console.log(error);
     throw new Error(error.msg || error.message);
   }
 };

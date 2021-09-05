@@ -1,24 +1,25 @@
-const graphql = require('graphql');
+const graphql = require("graphql");
 
 const { GraphQLString, GraphQLID, GraphQLList } = graphql;
-const { UserType, LoginAuthType } = require('../types/user.types');
+const { UserType, LoginAuthType } = require("../types/user.types");
+const {TagType} = require('../types/tags.types')
 const {
   RESPONSETYPES: { ERROR },
-} = require('../../constants');
+} = require("../../helpers/constants");
 
 const {
   signUp,
   login,
   editUser,
   deleteUser,
-} = require('../../controllers/user.controller');
+} = require("../../controllers/user.controller");
 
 exports.signUp = {
   type: UserType,
   args: {
     email: { type: GraphQLString },
     password: { type: GraphQLString },
-    tag: { type: GraphQLString },
+    tags: { type: GraphQLList(GraphQLString) },
     userType: { type: GraphQLString },
     role: { type: GraphQLString },
     firstName: { type: GraphQLString },
@@ -52,6 +53,7 @@ exports.editUser = {
     duration: { type: GraphQLString },
   },
   resolve(parent, args, req) {
+    console.log({});
     if (!req.userObject) {
       throw new Error(req.authErrorMsg);
     }

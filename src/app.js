@@ -1,19 +1,19 @@
-require('dotenv').config();
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { GraphQLError } = require('graphql');
-const { middleware, database } = require('./config');
+require("dotenv").config();
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
+const { GraphQLError } = require("graphql");
+const { middleware, database } = require("./config");
 
 const app = express();
-const root = { hello: () => 'Hello world!' };
+const root = { hello: () => "Hello world!" };
 
-const schema = require('./schema/index');
+const schema = require("./schema/index");
 
 app.use(middleware);
 
 // graphlql endpoint
 app.use(
-  '/graphql',
+  "/graphql",
   graphqlHTTP((req, res) => ({
     schema,
     rootValue: root,
@@ -25,7 +25,7 @@ app.use(
     },
     // customFormatErrorFn: (err) =>
     //   new GraphQLError({ message: err.message, code: err.statusCode }),
-  })),
+  }))
 );
 
 module.exports = async () => {
@@ -33,7 +33,7 @@ module.exports = async () => {
   await database.connect();
 
   // Health Check Endpoint
-  app.use('/', (req, res) => res.send('Ok'));
+  app.use("/", (req, res) => res.send("Ok"));
 
   return app;
 };

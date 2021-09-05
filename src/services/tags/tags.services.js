@@ -2,12 +2,12 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-useless-catch */
 /* eslint-disable no-undef */
-const { tagsRepository } = require('../../repositories');
-const tagsValidator = require('./tags.validators');
-const { RESPONSETYPES, STATUSCODE } = require('../../constants');
+const { tagsRepository } = require("../../repositories");
+const tagsValidator = require("./tags.validators");
+const { RESPONSETYPES, STATUSCODE } = require("../../helpers/constants");
 const {
   responseHelper: { errorResponse },
-} = require('../../helpers/error.helper');
+} = require("../../helpers/error.helper");
 
 class TagsService {
   // eslint-disable-next-line class-methods-use-this
@@ -20,7 +20,7 @@ class TagsService {
       if (tagExist)
         errorResponse(
           RESPONSETYPES.ERROR.TAG_EXIST.message,
-          STATUSCODE.bad_request,
+          STATUSCODE.bad_request
         );
       const data = await tagsRepository.createTag({ body });
       return data;
@@ -47,7 +47,7 @@ class TagsService {
       if (!tagExist)
         errorResponse(
           RESPONSETYPES.ERROR.INVALID_ID.message,
-          STATUSCODE.bad_request,
+          STATUSCODE.bad_request
         );
       const tags = await tagsRepository.editTag(body);
       return tags;

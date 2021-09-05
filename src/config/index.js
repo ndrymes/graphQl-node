@@ -1,6 +1,6 @@
-const middleware = require('./middleware');
-const envVars = require('./env-vars');
-const database = require('./database');
+const middleware = require("./middleware");
+const envVars = require("./env-vars");
+const database = require("./database");
 
 module.exports = {
   middleware,

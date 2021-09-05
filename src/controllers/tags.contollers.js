@@ -1,4 +1,4 @@
-const { tagsService } = require('../services/tags');
+const { tagsService } = require("../services/tags");
 
 exports.createTags = async ({ reqContext }) => {
   try {

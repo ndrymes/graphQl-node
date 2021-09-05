@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
-const debug = require('debug')('codelitt:server');
-const { databaseUrl } = require('./env-vars');
+const mongoose = require("mongoose");
+const debug = require("debug")("codelitt:server");
+const { databaseUrl } = require("./env-vars");
+const { MongoMemoryServer } = require("mongodb-memory-server");
 
 const databaseConnectionOptions = {
   useNewUrlParser: true,
@@ -15,13 +16,35 @@ const databaseConnectionOptions = {
  * If the connection is unsuccessful or throws an error, the app is exited.
  * @return void
  */
+
+const getUrl = async () =>
+  new Promise(async (resolve, reject) => {
+    try {
+      console.log("33###", process.env.NODE_ENV);
+      if (process.env.NODE_ENV === "test") {
+        // This will create an new instance of "MongoMemoryServer" and automatically start it
+        const mongod = await MongoMemoryServer.create();
+        const url = mongod.getUri();
+
+        // The Server can be stopped again with
+        return resolve(url);
+        // use an in memory Db for test purpose
+      }
+      // use your mongodb for other enviroments
+      return resolve(databaseUrl);
+    } catch (error) {
+      reject(error);
+    }
+  });
 const connect = async () => {
   try {
-    await mongoose.connect(databaseUrl, databaseConnectionOptions);
-    debug('Database connection successful');
+    const url = await getUrl();
+    console.log({ url });
+    await mongoose.connect(url, databaseConnectionOptions);
+    debug("Database connection successful");
   } catch (e) {
     // If an error occurs, exit app process
-    debug('Database connection failed with error', e);
+    debug("Database connection failed with error", e);
     process.exit(1);
   }
 };

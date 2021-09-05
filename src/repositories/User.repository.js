@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-const userModel = require('../models/user.model');
+const userModel = require("../models/user.model");
 
 class UserRepository {
   // persist user in the database
@@ -8,13 +8,13 @@ class UserRepository {
   }
 
   // fetch single user from the database
-  async getUser(body) {
-    return userModel.findOne(body);
+  async getUser(body, populate = '') {
+    return userModel.findOne(body).populate(populate);
   }
 
   // fetch all users from the database
-  async getUsers(body) {
-    return userModel.find(body);
+  async getUsers(body, populate = '') {
+    return userModel.find(body).populate(populate);
   }
 
   // update a user in the database

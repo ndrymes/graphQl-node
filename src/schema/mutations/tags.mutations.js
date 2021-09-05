@@ -1,16 +1,16 @@
-const graphql = require('graphql');
+const graphql = require("graphql");
 
 const { GraphQLString, GraphQLID } = graphql;
-const { TagType } = require('../types/tags.types');
+const { TagType } = require("../types/tags.types");
 const {
   RESPONSETYPES: { ERROR },
-} = require('../../constants');
+} = require("../../helpers/constants");
 
 const {
   createTags,
   editTag,
   deleteTags,
-} = require('../../controllers/tags.contollers');
+} = require("../../controllers/tags.contollers");
 
 exports.createTags = {
   type: TagType,
